@@ -9,16 +9,14 @@ const columns = [
         center:true,
       },
       {
-        name: 'Current Price',
-        selector: 'current_price',
+        name: 'Price Change',
+        selector: 'change_price',
         sortable: true,
         center:true,
-        class: "enMoney",
     },
-
-    {
-        name: 'Price Change (%)',
-        selector: 'change_price',
+      {
+        name: 'Current Price',
+        selector: 'current_price',
         sortable: true,
         center:true,
     },
@@ -49,8 +47,9 @@ class ZipList extends Component {
             data: data.map((state, index) => ({
                 rank : index + 1 , 
                 postal_code : state.name,
-                current_price: "$" + Number(state.median_listing_price).toLocaleString('en'),
                 change_price: (100 * Number(state.median_listing_price_mm).toLocaleString('en')).toFixed(2) + "%",
+                current_price: "$" + Number(state.median_listing_price).toLocaleString('en'),
+
             }))
         });
     }

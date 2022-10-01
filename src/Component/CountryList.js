@@ -8,20 +8,20 @@ const columns = [
         selector: 'county_name',
         center:true,
       },
+      
+    {
+        name: 'Price Change',
+        selector: 'change_price',
+        sortable: true,
+        center:true,
+    },
       {
         name: 'Current Price',
         selector: 'current_price',
         sortable: true,
         center:true,
-        class: "enMoney",
     },
 
-    {
-        name: 'Price Change (%)',
-        selector: 'change_price',
-        sortable: true,
-        center:true,
-    },
   ];
 
 class CountyList extends Component {
@@ -43,13 +43,14 @@ class CountyList extends Component {
 
 
     async getData() {
-        const data = await service('https://s3.amazonaws.com/crashrank.com/data_county.json');
+        const data = await service('../data/data_county.json');
         this.setState({
             data: data.map((state, index) => ({
                 rank : index + 1 , 
                 county_name : state.name,
-                current_price: "$" + Number(state.median_listing_price).toLocaleString('en'),
                 change_price: (100 * Number(state.median_listing_price_mm).toLocaleString('en')).toFixed(2) + "%",
+                current_price: "$" + Number(state.median_listing_price).toLocaleString('en'),
+
             }))
         });
     }
