@@ -43,7 +43,7 @@ class CountyList extends Component {
 
 
     async getData() {
-        const data = await service('../data/data_county.json');
+        const data = await service('https://s3.amazonaws.com/crashrank.com/data_county.json');
         this.setState({
             data: data.map((state, index) => ({
                 rank : index + 1 , 
@@ -68,7 +68,7 @@ class CountyList extends Component {
                     highlightOnHover
                     pointerOnHover
                     striped
-                    className="state-table"
+                    className="list-table"
                     data={this.state.data}
                 />
             </div>
