@@ -4,32 +4,27 @@ import DataTable from 'react-data-table-component';
 
 const columns = [
     {
-      name: 'Rank',
-      selector: 'rank',
-      center:true,
-    },
-    {
-      name: "Admin Name",
-      selector: 'admin_name'
-    },
-    {
-        name: 'School',
-        selector: 'school'
-    },
-    {
-        name: 'Address',
-        selector: 'school_address',
+        name: "Metro Name",
+        selector: 'metro_name',
         center:true,
+      },
+      {
+        name: 'Current Price',
+        selector: 'current_price',
+        sortable: true,
+        center:true,
+        class: "enMoney",
     },
     {
-        name: 'Score',
-        selector: 'score',
+        name: 'Price Change (%)',
+        selector: 'change_price',
         sortable: true,
         center:true,
     },
+
   ];
 
-class SchoolList extends Component {
+class metroList extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -48,17 +43,17 @@ class SchoolList extends Component {
 
 
     async getData() {
-        const data = await service('../data/school-scores.json');
+        const data = await service('../data/data_metro.json');
         this.setState({
-            data: data.map((school, index) => ({
+            data: data.map((state, index) => ({
                 rank : index + 1 , 
-                admin_name : school.admin_name,
-                school: school.school_name,
-                school_address: school.school_address,
-                score:school.score   
+                metro_name : state.name,
+                current_price: "$" + Number(state.median_listing_price).toLocaleString('en'),
+                change_price: (100 * Number(state.median_listing_price_mm).toLocaleString('en')).toFixed(2) + "%",
             }))
         });
     }
+
 
      componentWillUnmount() {
        clearInterval(this.interval);
@@ -66,19 +61,19 @@ class SchoolList extends Component {
 
      render(){
         return (
-            <div className="student-container">
-                <h2>School Leaderboard</h2>
+            <div className="list-container">
+                <h2>Metros with Highest Monthly Price Drop</h2>
+                
                 <DataTable
                     columns={columns}
                     highlightOnHover
                     pointerOnHover
                     striped
-                    className="student-table"
+                    className="metro-table"
                     data={this.state.data}
                 />
             </div>
     );
 }}
 
-
-export default SchoolList;
+export default metroList;

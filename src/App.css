@@ -9,8 +9,8 @@ h1{
 .App-link {
   color: #61dafb;
 }
-.student-container{
-  margin: 30px 0;
+.list-container{
+  margin: 20px 0;
 }
 .rdt_TableHeader{
   display: none !important;
@@ -22,23 +22,23 @@ h1{
 @media (max-width: 992px)
 {
   h2{font-size: 28px;}
-  .student-table .rdt_TableHeadRow > div:nth-child(4),
-  .student-table .rdt_TableBody .rdt_TableRow > div:nth-child(4)
+  .list-table .rdt_TableHeadRow > div:nth-child(4),
+  .list-table .rdt_TableBody .rdt_TableRow > div:nth-child(4)
   {display:none }
 }
 @media (max-width: 768px)
 {
   h2{font-size: 28px;}
-  .student-table .rdt_TableHeadRow > div:nth-child(4),
-  .student-table .rdt_TableBody .rdt_TableRow > div:nth-child(4)
+  .list-table .rdt_TableHeadRow > div:nth-child(4),
+  .list-table .rdt_TableBody .rdt_TableRow > div:nth-child(4)
   {display:none }
 }
 
 @media (max-width: 640px)
 {
   h2{font-size: 26px;}
-  .student-table .rdt_TableHeadRow > div:nth-child(4),
-  .student-table .rdt_TableBody .rdt_TableRow > div:nth-child(4)
+  .list-table .rdt_TableHeadRow > div:nth-child(4),
+  .list-table .rdt_TableBody .rdt_TableRow > div:nth-child(4)
   {display:none }
 }
 
@@ -46,10 +46,20 @@ h1{
 @media (max-width: 480px)
 {
   h2{font-size: 24px;}
-  .student-table .rdt_TableHeadRow > div:nth-child(3),
-  .student-table .rdt_TableBody .rdt_TableRow > div:nth-child(3),
-  .student-table .rdt_TableHeadRow > div:nth-child(4),
-  .student-table .rdt_TableBody .rdt_TableRow > div:nth-child(4)
+  .list-table .rdt_TableHeadRow > div:nth-child(3),
+  .list-table .rdt_TableBody .rdt_TableRow > div:nth-child(3),
+  .list-table .rdt_TableHeadRow > div:nth-child(4),
+  .list-table .rdt_TableBody .rdt_TableRow > div:nth-child(4)
   {display:none }
 }
 
+#root {
+  margin: 25px;
+}
+
+/* Navbar links */
+.navbar {
+
+  color: white;
+
+}

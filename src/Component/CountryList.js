@@ -4,32 +4,27 @@ import DataTable from 'react-data-table-component';
 
 const columns = [
     {
-      name: 'Rank',
-      selector: 'rank',
-      center:true,
-    },
-    {
-      name: 'Name',
-      selector: 'name'
-    },
-    {
-        name: 'Class',
-        selector: 'class',
+        name: "County Name",
+        selector: 'county_name',
         center:true,
+      },
+      {
+        name: 'Current Price',
+        selector: 'current_price',
+        sortable: true,
+        center:true,
+        class: "enMoney",
     },
+
     {
-        name: 'School',
-        selector: 'school'
-    },
-    {
-        name: 'Score',
-        selector: 'score',
+        name: 'Price Change (%)',
+        selector: 'change_price',
         sortable: true,
         center:true,
     },
   ];
 
-class StudentList extends Component {
+class CountyList extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -37,7 +32,7 @@ class StudentList extends Component {
         };
       }
 
- 
+
       componentDidMount() {
         this.getData();
         this.interval = setInterval(() => {
@@ -46,18 +41,19 @@ class StudentList extends Component {
         }, process.env.REACT_APP_REFRESH_RATE);
     }
 
+
     async getData() {
-        const data = await service('../data/students-scores.json');
+        const data = await service('../data/data_county.json');
         this.setState({
-            data: data.map((student, index) => ({
+            data: data.map((state, index) => ({
                 rank : index + 1 , 
-                name : student.name,
-                class: student.class_name, 
-                school: student.school_name, 
-                score:student.score  
+                county_name : state.name,
+                current_price: "$" + Number(state.median_listing_price).toLocaleString('en'),
+                change_price: (100 * Number(state.median_listing_price_mm).toLocaleString('en')).toFixed(2) + "%",
             }))
         });
     }
+
 
      componentWillUnmount() {
        clearInterval(this.interval);
@@ -65,18 +61,19 @@ class StudentList extends Component {
 
      render(){
         return (
-            <div className="student-container">
-                <h2>Student's Leaderboard</h2>
+            <div className="list-container">
+                <h2>Counties with Highest Monthly Price Drop</h2>
                 <DataTable
                     columns={columns}
                     highlightOnHover
                     pointerOnHover
                     striped
-                    className="student-table"
+                    className="state-table"
                     data={this.state.data}
                 />
             </div>
     );
 }}
 
-export default StudentList;
+
+export default CountyList;

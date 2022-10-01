@@ -7,6 +7,7 @@ import LeaderBoards from './Component/LeaderBoards';
 function App() {
   return (
     <div className="App container">
+
       <LeaderBoards/>
     </div>
   );

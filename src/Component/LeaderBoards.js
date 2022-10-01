@@ -1,42 +1,57 @@
 import React , {Component} from 'react';
-import StudentList from './StudentList';
-import ClassList from './ClassList';
-import SchoolList from './SchoolList';
-import { Tab, Row, Col, Nav } from 'react-bootstrap';
+import ZipList from './ZipList';
+import MetroList from './MetroList';
+import Countylist from './CountryList';
+import StateList from './StateList';
+import { Tab, Nav} from 'react-bootstrap';
 
 class LeaderBoards extends Component {
     render(){
         return (
-        <Tab.Container id="left-tabs-example" defaultActiveKey="first">
-            <Row>
-              <Col sm={12} md={4} lg={3}>
-              <h1>Leaderboard</h1>
-                <Nav variant="pills" className="flex-column">
-                  <Nav.Item>
-                    <Nav.Link eventKey="first">Student's Leaderboard</Nav.Link>
-                  </Nav.Item>
-                  <Nav.Item>
-                    <Nav.Link eventKey="second">Class Leaderboard</Nav.Link>
-                  </Nav.Item>
-                  <Nav.Item>
-                    <Nav.Link eventKey="third">School Leaderboard</Nav.Link>
-                  </Nav.Item>
-                </Nav>
-              </Col>
-              <Col sm={12} md={8} lg={9}>
+        
+        <Tab.Container defaultActiveKey="first">
+     
+                
+                <Nav variant="pills" className="flex-row justify-content-center">
+                <Nav.Item>
+                    <Nav.Link eventKey="first">
+                    State
+                    </Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                    <Nav.Link eventKey="second">
+                    Metro
+                    </Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                    <Nav.Link eventKey="third" >
+                    County
+                    </Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                    <Nav.Link eventKey="fourth" >
+                    Zip Code
+                    </Nav.Link>
+                </Nav.Item>
+            </Nav>
+
+              {/* <Col sm={12} md={8} lg={9}> */}
                 <Tab.Content>
                   <Tab.Pane eventKey="first">
-                    <StudentList/>
+                    <StateList/>
                   </Tab.Pane>
                   <Tab.Pane eventKey="second">
-                    <ClassList/>
+                    <MetroList/>
                   </Tab.Pane>
                   <Tab.Pane eventKey="third">
-                    <SchoolList/>
+                    <Countylist/>
+                  </Tab.Pane>
+                  <Tab.Pane eventKey="fourth">
+                    <ZipList/>
                   </Tab.Pane>
                 </Tab.Content>
-              </Col>
-            </Row>
+              {/* </Col> */}
+  
           </Tab.Container>
         );
     }
