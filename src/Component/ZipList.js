@@ -69,7 +69,7 @@ class ZipList extends Component {
                     highlightOnHover
                     pointerOnHover
                     striped
-                    className="region-table"
+                    className="list-table"
                     data={this.state.data}
                 />
             </div>

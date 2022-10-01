@@ -68,7 +68,7 @@ class StateList extends Component {
                     highlightOnHover
                     pointerOnHover
                     striped
-                    className="state-table"
+                    className="list-table"
                     data={this.state.data}
                 />
             </div>

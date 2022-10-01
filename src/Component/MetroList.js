@@ -69,7 +69,7 @@ class metroList extends Component {
                     highlightOnHover
                     pointerOnHover
                     striped
-                    className="metro-table"
+                    className="list-table"
                     data={this.state.data}
                 />
             </div>
